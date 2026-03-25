@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifesto for Hybrid Intelligence &mdash; Real-World Scenarios</title>
+    <style>
+        :root {
+            --bg-color: #030305;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --red: #f87171;
+            --green: #4ade80;
+            --yellow: #fbbf24;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 0 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, transparent 100%);
+        }
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        .orb-1 { width: 50vw; height: 50vw; background: #1d4ed8; top: -20%; left: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; background: #6d28d9; bottom: -10%; right: -10%; animation-delay: -5s; animation-duration: 25s; }
+        .orb-3 { width: 30vw; height: 30vw; background: #0ea5e9; top: 30%; left: 40%; animation-delay: -10s; animation-duration: 30s; opacity: 0.2; }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(3vw, 5vh) scale(1.1); }
+            100% { transform: translate(-2vw, 8vh) scale(0.95); }
+        }
+
+        header {
+            max-width: 900px;
+            margin: 80px auto 30px auto;
+            text-align: center;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 0.7; }
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* --- Section Headers --- */
+        .section-header {
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .section-header .section-sub {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- Scenario Cards --- */
+        .scenario {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 35px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        .scenario:hover {
+            border-color: rgba(96, 165, 250, 0.3);
+            background-color: rgba(255, 255, 255, 0.04);
+        }
+        .scenario-label {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        .label-value {
+            background: rgba(96, 165, 250, 0.15);
+            color: var(--accent);
+        }
+        .label-principle {
+            background: rgba(74, 222, 128, 0.12);
+            color: var(--green);
+        }
+        .scenario-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+        .scenario-ref {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .scene { margin-bottom: 24px; }
+        .scene-heading {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .scene-heading.violation { color: var(--red); }
+        .scene-heading.consequence { color: var(--yellow); }
+        .scene-heading.lesson { color: var(--green); }
+
+        .scene p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .scene p strong {
+            color: #d1d5db;
+        }
+
+        .quote-block {
+            margin: 20px 0;
+            padding: 16px 24px;
+            border-left: 3px solid var(--accent);
+            background: rgba(96, 165, 250, 0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .quote-block strong {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: 100px auto 50px auto;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            padding-top: 40px;
+            color: var(--text-muted);
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .scenario { padding: 24px; }
+            header { margin-top: 50px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header>
+        <a href="manifesto.html" class="back-link">&larr; Back to Manifesto</a>
+        <h1>Real-World Scenarios</h1>
+        <p class="subtitle">What happens when teams violate the principles of Hybrid Intelligence? Each scenario below illustrates a real failure mode &mdash; and the principle that would have prevented it.</p>
+    </header>
+
+    <main>
+
+        <!-- ==================== VALUES ==================== -->
+        <div class="section-header">
+            <h2>The Four Values</h2>
+            <p class="section-sub">Core trade-offs that define hybrid intelligence teams</p>
+        </div>
+
+        <!-- V1 -->
+        <div class="scenario">
+            <span class="scenario-label label-value">Value</span>
+            <h3 class="scenario-title">The Payments Feature That Nobody Could Debug</h3>
+            <p class="scenario-ref">Verifiable Intention over Accelerated Production</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A startup uses AI agents to ship a new payments feature in 2 days instead of 2 weeks. The agents generate working code, tests pass, it deploys. But the <strong>intent was never formalized</strong> &mdash; no specification defines edge cases for partial refunds, currency conversions, or idempotency.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>Three weeks later, a duplicate charge bug hits 2,000 customers. The team can't trace <strong>what the system was supposed to do</strong> vs. what it does, because no verifiable intention ever existed. Debugging becomes archaeology instead of verification.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading lesson">The Lesson</p>
+                <p>Without verifiable intention, you can't distinguish a bug from a feature gap. The speed was real. The understanding was not.</p>
+            </div>
+        </div>
+
+        <!-- V2 -->
+        <div class="scenario">
+            <span class="scenario-label label-value">Value</span>
+            <h3 class="scenario-title">The Overnight Refactoring Disaster</h3>
+            <p class="scenario-ref">Bounded Autonomy over Maximized Automation</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team gives their coding agent full autonomy to refactor a legacy monolith into microservices. <strong>No constraints on scope, no rollback triggers, no escalation rules.</strong> The agent refactors 47 files overnight.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The agent introduces 3 subtle data race conditions across service boundaries and breaks the deployment pipeline because it restructured the CI config "for consistency." The cost of fixing the agent's well-intentioned damage exceeds the cost of doing the refactoring manually.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading lesson">The Lesson</p>
+                <p>Maximized automation without bounds creates blast radius problems. The agent did exactly what it was optimized to do &mdash; maximize throughput &mdash; but nobody defined where it should stop.</p>
+            </div>
+        </div>
+
+        <!-- V3 -->
+        <div class="scenario">
+            <span class="scenario-label label-value">Value</span>
+            <h3 class="scenario-title">Five Smart Agents, Zero Coordination</h3>
+            <p class="scenario-ref">Human-Agent Teams over Uncoordinated Intelligence</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A company deploys five specialized AI agents: one for code generation, one for testing, one for documentation, one for deployment, and one for monitoring. Each agent is excellent in isolation. But <strong>there's no shared context between them.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The code agent writes a feature, the test agent generates tests against an outdated API contract, the docs agent documents behavior that doesn't match the implementation, and the deployment agent pushes a version the monitoring agent doesn't recognize. Five intelligent systems, zero coordination.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading lesson">The Lesson</p>
+                <p>Intelligence without coordination produces fragmented results. It doesn't matter whether the isolation is a solo dev with ChatGPT or five specialized agents &mdash; the failure mode is the same: <strong>uncoordinated intelligence.</strong></p>
+            </div>
+        </div>
+
+        <!-- V4 -->
+        <div class="scenario">
+            <span class="scenario-label label-value">Value</span>
+            <h3 class="scenario-title">The Six-Week Compliance Gap</h3>
+            <p class="scenario-ref">Governance as Design over Governance as Post-Audit</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A financial services company deploys AI agents for automated code review and deployment. Governance is handled the traditional way: <strong>quarterly audits, compliance checks after the fact.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>Between audits, an agent approves and deploys a change that violates data residency requirements. The violation runs in production for 6 weeks before the next audit catches it. The regulatory fine is significant, and the real cost is the remediation and reputational damage.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading lesson">The Lesson</p>
+                <p>Post-audit governance assumes a pace of change slow enough for periodic reviews to catch problems. With agents deploying continuously, governance needs to be embedded in the process itself &mdash; as constraints and guardrails, not as retrospective checks.</p>
+            </div>
+        </div>
+
+        <!-- ==================== PRINCIPLES ==================== -->
+        <div class="section-header">
+            <h2>The Twelve Principles</h2>
+            <p class="section-sub">Concrete scenarios that bring each principle to life</p>
+        </div>
+
+        <!-- P1 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 01</span>
+            <h3 class="scenario-title">The Lost Institutional Memory</h3>
+            <p class="scenario-ref">Intention is the Primary Artifact</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team uses AI agents to generate features but treats user stories as the primary artifact. The stories are vague: "As a user, I want to filter results." The agents produce working code, but the <strong>specification that guided the agent was a throwaway prompt, not a maintained artifact.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>Six months later, nobody can understand why the agent implemented filtering the way it did. The prompt history is scattered across chat logs. Onboarding new team members becomes impossible. The institutional memory of <em>why things are the way they are</em> is lost.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The violation test:</strong> "We don't maintain specs, we just prompt the agent and ship."
+            </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 02</span>
+            <h3 class="scenario-title">The 40-View Dashboard Nobody Uses</h3>
+            <p class="scenario-ref">Customer Value Drives the Loop</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A SaaS team uses agents to build a comprehensive admin dashboard with 40+ data views, sorting, filtering, and export capabilities. Every feature works, tests pass, the demo looks impressive. But <strong>they never validated whether admins actually need 40 views.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>User research shows admins use exactly 3 views for 95% of their work. The remaining 37 views slow the interface, confuse new users, and create a maintenance burden. The agents delivered complete output that passed tests while solving a problem nobody had.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "The iteration loop must be anchored to validated human outcomes, not to agent throughput."
+            </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 03</span>
+            <h3 class="scenario-title">The Last-Minute Schema Change</h3>
+            <p class="scenario-ref">Govern Change, Accelerate Execution</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A product manager requests a last-minute schema change three days before launch. The team's agent implements it in 30 minutes. The code works. Tests pass. But <strong>nobody assessed the downstream impact.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>A partner integration depends on the old schema. The mobile app caches the old format for 72 hours. The data migration script doesn't handle the 2.3M existing records. The change was cheap to execute and catastrophically expensive to govern.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "The agent implements the change, the human decides whether the system can absorb it."
+            </div>
+        </div>
+
+        <!-- P4 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 04</span>
+            <h3 class="scenario-title">The Uncontracted Migration</h3>
+            <p class="scenario-ref">Safe Delegation Requires Contracts</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team delegates a database migration to an AI agent: "Migrate the user table to the new schema." <strong>No constraints on downtime, no rollback plan, no acceptance criteria</strong> beyond "it works."</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The agent performs the migration during peak hours using a locking strategy that causes 45 minutes of downtime. The migration succeeds, but the definition of "success" was never contracted. The agent did what it was told. The failure was in the delegation, not the execution.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The violation test:</strong> "We give agents tasks without constraints or acceptance criteria."
+            </div>
+        </div>
+
+        <!-- P5 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 05</span>
+            <h3 class="scenario-title">The Static Autonomy That Rotted</h3>
+            <p class="scenario-ref">Autonomy is a Design Parameter</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team treats agent autonomy as binary &mdash; autonomous for low-risk tasks, supervised for high-risk ones. They <strong>set the levels once and never recalibrate.</strong> A task initially classified as low-risk (updating documentation) evolves over time.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The agent starts modifying API documentation that external partners depend on. Nobody noticed the risk profile changed because autonomy was set once, not dynamically adjusted. A low-risk task became high-risk without anyone recalibrating the controls.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The violation test:</strong> "We set autonomy levels once and never revisit them."
+            </div>
+        </div>
+
+        <!-- P6 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 06</span>
+            <h3 class="scenario-title">The 94% Approval Rate</h3>
+            <p class="scenario-ref">Sustainable Cognitive Pace</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A startup CTO, excited by agent productivity, assigns a 4-person team to work with agents on 6 projects simultaneously. The agents generate code efficiently. Management sees the throughput and doubles the sprint scope.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The developers context-switch between reviewing agent output on 6 codebases. After 3 months, nobody can hold the full architecture of any single project in their head. The team's PR approval rate is 94% &mdash; but that's because <strong>they're rubber-stamping, not reviewing.</strong> Quality collapsed, and it collapsed <em>silently</em>: no visible failures, no production incidents yet, just a slow accumulation of technical debt.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "When output exceeds understanding, quality collapses silently."
+            </div>
+        </div>
+
+        <!-- P7 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 07</span>
+            <h3 class="scenario-title">The Kafka Guarantor Who Couldn't Guarantee</h3>
+            <p class="scenario-ref">Humans are Guarantors</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A mid-level developer is assigned to oversee an AI agent building a real-time data pipeline in Apache Kafka. The developer <strong>has never worked with Kafka or event streaming.</strong> The agent produces technically correct code &mdash; partition strategies, exactly-once semantics, dead letter queues.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The developer approves every PR because the tests pass and the agent's explanations sound reasonable. Three months later, a partition rebalancing issue causes data loss during a deploy. The developer never understood the system they were "guaranteeing."</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "A human who cannot understand the agent's output cannot meaningfully guarantee it."
+            </div>
+        </div>
+
+        <!-- P8 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 08</span>
+            <h3 class="scenario-title">The Eleven-Day Silent Corruption</h3>
+            <p class="scenario-ref">Failure Demands a Protocol</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team uses an AI agent for automated dependency updates. The agent bumps a library version that introduces a subtle behavioral change &mdash; not a crash, not a test failure, just <strong>a slight difference in how floating-point rounding works</strong> in a financial calculation. There's no failure protocol: no anomaly detection, no human review trigger, no rollback threshold.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The behavioral change runs in production for 11 days before a customer reports invoice totals off by a few cents. Total impact: 43,000 miscalculated invoices. The cost was proportional to the time between failure and detection &mdash; and there was nothing in place to shorten that window.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "An undetected agent failure is more dangerous than a visible human mistake."
+            </div>
+        </div>
+
+        <!-- P9 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 09</span>
+            <h3 class="scenario-title">The Three-Agent Merge Conflict</h3>
+            <p class="scenario-ref">Coherence is Collective Responsibility</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>Three AI agents work in parallel on different parts of the same codebase. Agent A refactors the authentication module. Agent B adds a new feature that depends on the old auth interface. Agent C updates the database schema in a way that's incompatible with Agent A's changes. <strong>Each agent's work passes its own tests in isolation.</strong></p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>When merged, the system breaks in three places. No one &mdash; human or agent &mdash; was responsible for system-wide coherence. Agents don't "notice" that a colleague is changing a shared dependency. The coherence problem scales with the number of concurrent agents.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The violation test:</strong> "We let multiple agents work in parallel without coherence checks."
+            </div>
+        </div>
+
+        <!-- P10 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 10</span>
+            <h3 class="scenario-title">The Frontend Agent That Touched Infrastructure</h3>
+            <p class="scenario-ref">Trust is Calibrated, Not Granted</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team has used an AI agent for React frontend development for 8 months with excellent results. When they need to build a Terraform infrastructure module, <strong>they give the same agent the same autonomy level,</strong> reasoning: "this agent has proven itself."</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The agent produces Terraform code that looks plausible but has critical security misconfigurations: overly permissive IAM policies, publicly accessible S3 buckets, no state locking. Trust earned in React was blindly transferred to infrastructure.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "An agent trusted in one domain has earned nothing in another."
+            </div>
+        </div>
+
+        <!-- P11 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 11</span>
+            <h3 class="scenario-title">The Ambiguous "Improve Performance" Task</h3>
+            <p class="scenario-ref">Ambiguity is Risk</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team gives an agent the task: "Improve the performance of the search feature." The specification <strong>doesn't define what "improve" means</strong> &mdash; latency? relevance? throughput? &mdash; and doesn't set targets or constraints.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>The agent rewrites the search engine, replacing the Elasticsearch integration with a custom in-memory solution. Response times drop from 200ms to 15ms. But the new implementation can't handle the full dataset, breaks pagination, and ignores relevance scoring. The agent "improved performance" exactly as ambiguously as it was asked to &mdash; and because the output looked competent (15ms!), the team almost shipped it.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "What an agent does not understand, it invents with apparent coherence."
+            </div>
+        </div>
+
+        <!-- P12 -->
+        <div class="scenario">
+            <span class="scenario-label label-principle">Principle 12</span>
+            <h3 class="scenario-title">The Retro That Never Improved Anything</h3>
+            <p class="scenario-ref">Continuous Mutual Learning</p>
+            <div class="scene">
+                <p class="scene-heading violation">The Violation</p>
+                <p>A team holds retros every two weeks. They discuss what went well, including agent performance. But the output is always the same: <strong>"the agent made errors on X, Y, Z &mdash; let's be more careful next time."</strong> They never trace errors back to ambiguities in their specs. They never update specification templates. They never adjust delegation boundaries.</p>
+            </div>
+            <div class="scene">
+                <p class="scene-heading consequence">What Went Wrong</p>
+                <p>After 6 months, they're making the same delegation mistakes they made on day one. The humans didn't learn to write better specs, and the team's effective use of agents never improved. Both sides stagnated because reflection never ran in both directions.</p>
+            </div>
+            <div class="quote-block">
+                <strong>The principle says:</strong> "The team and its agents co-evolve."
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p><a href="manifesto.html">&larr; Read the Manifesto</a> &bull; Created March 2026 &bull; The Fourth Wave of Software Delivery</p>
+    </footer>
+</body>
+</html>

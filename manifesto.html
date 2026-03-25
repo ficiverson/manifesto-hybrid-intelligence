@@ -13,13 +13,11 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
@@ -29,8 +27,6 @@
             position: relative;
             overflow-x: hidden;
         }
-
-        /* --- "Open to Discuss" Ribbon --- */
         .ribbon-wrapper {
             position: fixed;
             top: 0;
@@ -40,7 +36,6 @@
             overflow: hidden;
             z-index: 1000;
         }
-
         .ribbon {
             position: absolute;
             top: 35px;
@@ -60,18 +55,15 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-
         .ribbon:hover {
             background: linear-gradient(135deg, #38bdf8, #3b82f6);
             box-shadow: 0 6px 25px rgba(56, 189, 248, 0.7);
         }
-
-        /* --- Architectural Grid Background --- */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -79,8 +71,6 @@
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, transparent 100%);
         }
-
-        /* --- Animated Ambient Orbs --- */
         .bg-orb {
             position: fixed;
             border-radius: 50%;
@@ -89,43 +79,37 @@
             opacity: 0.4;
             animation: float 20s infinite ease-in-out alternate;
         }
-
         .orb-1 {
             width: 50vw; height: 50vw;
-            background: #1d4ed8; 
+            background: #1d4ed8;
             top: -20%; left: -10%;
         }
-
         .orb-2 {
             width: 40vw; height: 40vw;
-            background: #6d28d9; 
+            background: #6d28d9;
             bottom: -10%; right: -10%;
             animation-delay: -5s;
             animation-duration: 25s;
         }
-
         .orb-3 {
             width: 30vw; height: 30vw;
-            background: #0ea5e9; 
+            background: #0ea5e9;
             top: 30%; left: 40%;
             animation-delay: -10s;
             animation-duration: 30s;
             opacity: 0.2;
         }
-
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(3vw, 5vh) scale(1.1); }
             100% { transform: translate(-2vw, 8vh) scale(0.95); }
         }
-
         header {
             max-width: 900px;
             margin: 100px auto 60px auto;
             text-align: center;
             position: relative;
         }
-
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -135,27 +119,23 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .subtitle {
             font-size: 1.2rem;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
         }
-
         main {
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
-
         .intro {
             font-size: 1.4rem;
             margin-bottom: 50px;
             text-align: center;
             font-weight: 300;
         }
-
         .values-container {
             margin-bottom: 80px;
             background: rgba(0, 0, 0, 0.4);
@@ -165,24 +145,20 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-
         .value {
             font-size: 1.8rem;
             margin-bottom: 20px;
             text-align: center;
         }
-
         .value strong {
             color: var(--accent);
             font-weight: 600;
         }
-
         .value span {
             color: var(--text-muted);
             font-weight: 300;
             margin: 0 10px;
         }
-
         .disclaimer {
             text-align: center;
             font-size: 1.1rem;
@@ -190,24 +166,20 @@
             margin-top: 40px;
             font-style: italic;
         }
-
         .principles-section {
             margin-top: 100px;
         }
-
         .principles-section h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
             font-weight: 700;
         }
-
         .principles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
-
         .principle-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -219,14 +191,12 @@
             display: flex;
             flex-direction: column;
         }
-
         .principle-card:hover {
             transform: translateY(-5px);
             border-color: rgba(96, 165, 250, 0.5);
             background-color: rgba(255, 255, 255, 0.05);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
-
         .principle-number {
             font-family: monospace;
             color: var(--accent);
@@ -234,7 +204,6 @@
             margin-bottom: 10px;
             display: block;
         }
-
         .principle-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -242,18 +211,36 @@
             color: #ffffff;
             line-height: 1.3;
         }
-
         .principle-text {
             color: var(--text-muted);
             font-size: 1rem;
             flex-grow: 1;
         }
-
         .principle-text strong {
             color: #d1d5db;
             font-weight: 600;
         }
-
+        /* --- Link to Examples --- */
+        .examples-link {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .examples-link a {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+        }
+        .examples-link a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+        }
         footer {
             max-width: 900px;
             margin: 100px auto 50px auto;
@@ -262,7 +249,6 @@
             padding-top: 40px;
             color: var(--text-muted);
         }
-
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .value { font-size: 1.3rem; }
@@ -273,25 +259,20 @@
     </style>
 </head>
 <body>
-
     <div class="ribbon-wrapper">
         <a href="#" class="ribbon" title="Join the debate">Open to discuss</a>
     </div>
-
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
     <div class="bg-orb orb-3"></div>
-
     <header>
         <h1>Manifesto for Hybrid Intelligence</h1>
         <p class="subtitle">For software delivery teams integrating AI agents and humans as first-class participants.</p>
     </header>
-
     <main>
         <p class="intro">
             We are uncovering better ways of developing software by partnering in teams where agents and humans collaborate. Through this work, we have come to value:
         </p>
-
         <div class="values-container">
             <div class="value">
                 <strong>Verifiable Intention</strong> <span>over</span> Accelerated Production
@@ -300,100 +281,88 @@
                 <strong>Bounded Autonomy</strong> <span>over</span> Maximized Automation
             </div>
             <div class="value">
-                <strong>Human-Agent Teams</strong> <span>over</span> Isolated Individuals or Models
+                <strong>Human-Agent Teams</strong> <span>over</span> Uncoordinated Intelligence
             </div>
             <div class="value">
                 <strong>Governance as Design</strong> <span>over</span> Governance as Post-Audit
             </div>
-
             <p class="disclaimer">
                 That is, while there is value in the items on the right, we value the items on the left more.
             </p>
         </div>
-
         <section class="principles-section">
             <h2>Twelve Principles of Hybrid Intelligence</h2>
             <div class="principles-grid">
-                
+
                 <div class="principle-card">
                     <span class="principle-number">01</span>
                     <h3 class="principle-title">Intention is the Primary Artifact</h3>
                     <p class="principle-text">The value of a human-agent team is measured by the clarity, verifiability, and reusability of the specifications that guide production. <strong>Working software is still the ultimate goal, but executable intent is how we achieve it.</strong></p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">02</span>
                     <h3 class="principle-title">Customer Value Drives the Loop</h3>
-                    <p class="principle-text"><strong>Our highest priority is to satisfy the customer through early and continuous delivery of verified solutions.</strong> Agents allow us to iterate faster, but the loop is only successful if it is tethered to human-centric outcomes.</p>
+                    <p class="principle-text"><strong>Our highest priority is to satisfy the customer through early and continuous delivery of verified solutions.</strong> Agents can produce output that appears complete &mdash; tests pass, features work &mdash; while solving a problem no customer has. The iteration loop must be anchored to validated human outcomes, not to agent throughput.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">03</span>
-                    <h3 class="principle-title">Embrace Change Through Agile Agents</h3>
-                    <p class="principle-text"><strong>Welcome changing requirements, even late in development.</strong> While humans must govern the architectural coherence of rapid changes, AI agents harness change for the customer's competitive advantage by implementing shifts in minutes rather than sprints.</p>
+                    <h3 class="principle-title">Govern Change, Accelerate Execution</h3>
+                    <p class="principle-text"><strong>Welcome changing requirements, even late in development.</strong> Agent speed makes change cheap to execute but not cheap to govern. Humans must own architectural coherence, dependency impact, and integration risk &mdash; the agent implements the change, the human decides whether the system can absorb it.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">04</span>
                     <h3 class="principle-title">Safe Delegation Requires Contracts</h3>
                     <p class="principle-text">An agent can only operate responsibly when provided with a clear objective, strict constraints, verifiable acceptance criteria, and an explicit escalation policy.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">05</span>
                     <h3 class="principle-title">Autonomy is a Design Parameter</h3>
                     <p class="principle-text">Autonomy is not a fixed state. It must be dynamically calibrated based on task risk, action reversibility, and specification maturity.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">06</span>
                     <h3 class="principle-title">Sustainable Cognitive Pace</h3>
-                    <p class="principle-text"><strong>Agile processes promote sustainable development.</strong> In a hybrid team, the pace of delivery is dictated by the human cognitive capacity to validate and orchestrate, not the agent's infinite capacity to generate. <strong>Sponsors, humans, and systems should maintain a constant, manageable pace indefinitely.</strong></p>
+                    <p class="principle-text">In a hybrid team, the bottleneck shifts from production to comprehension. The pace of delivery is dictated by the human capacity to validate, orchestrate, and maintain a coherent mental model &mdash; not the agent's infinite capacity to generate. <strong>When output exceeds understanding, quality collapses silently.</strong> Sponsors, humans, and systems should maintain a pace the team can cognitively sustain indefinitely.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">07</span>
                     <h3 class="principle-title">Humans are Guarantors</h3>
-                    <p class="principle-text">The human role shifts from manual implementation toward intention translation, orchestration, validation, and systemic responsibility. <strong>Build projects around motivated individuals, give them the AI tools they need, and trust them to govern the outcomes.</strong></p>
+                    <p class="principle-text">The human role shifts from manual implementation toward intention translation, orchestration, validation, and systemic responsibility. But guarantorship demands active competence &mdash; <strong>a human who cannot understand the agent's output cannot meaningfully guarantee it.</strong> Build projects around motivated individuals, equip them with the right AI tools, invest in their ability to evaluate what those tools produce, and trust them to govern the outcomes.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">08</span>
-                    <h3 class="principle-title">Velocity is Not Value</h3>
-                    <p class="principle-text">Agents can generate massive output that doesn't solve the right problem. True velocity is measured from validated intent to verifiable evidence.</p>
+                    <h3 class="principle-title">Failure Demands a Protocol</h3>
+                    <p class="principle-text">When an agent fails, the cost is proportional to the time between failure and detection. Hybrid teams must design explicit failure protocols: how agent errors are surfaced, how escalation is triggered, what the human fallback is, and how the system degrades gracefully. <strong>An undetected agent failure is more dangerous than a visible human mistake.</strong></p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">09</span>
                     <h3 class="principle-title">Coherence is Collective Responsibility</h3>
                     <p class="principle-text">When multiple agents generate changes in parallel, system consistency becomes the hardest coordination problem. <strong>Continuous attention to technical excellence and good design enhances agility.</strong> Coherence must be explicitly designed.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">10</span>
                     <h3 class="principle-title">Trust is Calibrated, Not Granted</h3>
-                    <p class="principle-text">Trust in an agent is established through historical performance and test coverage. It is never blindly granted; it is adjusted dynamically with empirical evidence.</p>
+                    <p class="principle-text">Trust in an agent is established through demonstrated performance within a specific task domain, not through general reputation. It is never blindly granted; it is scoped to capability boundaries and adjusted dynamically with empirical evidence. <strong>An agent trusted in one domain has earned nothing in another.</strong></p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">11</span>
                     <h3 class="principle-title">Ambiguity is Risk</h3>
                     <p class="principle-text">What an agent does not understand, it invents with apparent coherence. <strong>The most efficient method of conveying information to an agent is a rigorously refined specification.</strong> Resolving ambiguities before delegation is the modern equivalent of face-to-face communication.</p>
                 </div>
-
                 <div class="principle-card">
                     <span class="principle-number">12</span>
                     <h3 class="principle-title">Continuous Mutual Learning</h3>
-                    <p class="principle-text"><strong>At regular intervals, the team reflects on how to become more effective.</strong> The team learns from agent error patterns to improve their own mental models, while agent-initiated interruptions act as valuable signals to tune and adjust our specifications.</p>
+                    <p class="principle-text"><strong>At regular intervals, the team reflects on how to become more effective</strong> &mdash; but in a hybrid team, reflection runs in both directions. Agent error patterns reveal where human specifications are ambiguous, incomplete, or contradictory. Human corrections reveal where agent capabilities have boundaries. Each cycle should produce better specifications <em>and</em> better-calibrated delegation &mdash; the team and its agents co-evolve.</p>
                 </div>
+            </div>
 
+            <div class="examples-link">
+                <a href="examples.html">See Real-World Scenarios &rarr;</a>
             </div>
         </section>
     </main>
-
     <footer>
-        <p>Created March 2026 • The Fourth Wave of Software Delivery</p>
+        <p>Created March 2026 &bull; The Fourth Wave of Software Delivery</p>
     </footer>
-
 </body>
 </html>
